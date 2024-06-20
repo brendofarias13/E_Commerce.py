@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fazer Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Fazer Pedido</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Início</a></li>
+            <li><a href="{{ url_for('add_product') }}">Adicionar Produto</a></li>
+            <li><a href="{{ url_for('delete_product') }}">Excluir Produto</a></li>
+            <li><a href="{{ url_for('place_order') }}">Fazer Pedido</a></li>
+            <li><a href="{{ url_for('view_orders') }}">Ver Pedidos</a></li>
+            <li><a href="{{ url_for('view_products') }}">Ver Produtos</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <form method="post" action="{{ url_for('place_order') }}">
+            <label for="nome_cliente">Nome do Cliente:</label>
+            <input type="text" id="nome_cliente" name="nome_cliente" required>
+            <label for="contato_cliente">Contato do Cliente:</label>
+            <input type="text" id="contato_cliente" name="contato_cliente" required>
+            <label for="endereco_cliente">Endereço do Cliente:</label>
+            <textarea id="endereco_cliente" name="endereco_cliente" required></textarea>
+            <label for="produto_id">Produto:</label>
+            <select id="produto_id" name="produto_id" required>
+                {% for produto in produtos %}
+                <option value="{{ produto[0] }}">
+                    {{ produto[1] }}
+                    {% if produto[2] %}
+                    <img src="{{ url_for('static', filename=produto[2]) }}" alt="{{ produto[1] }}" width="50">
+                    {% endif %}
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Fazer Pedido</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Sistema de E-commerce</p>
+    </footer>
+</body>
+</html>
