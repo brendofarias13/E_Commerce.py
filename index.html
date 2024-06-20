@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de E-commerce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Sistema de E-commerce</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Início</a></li>
+            <li><a href="{{ url_for('add_product') }}">Adicionar Produto</a></li>
+            <li><a href="{{ url_for('delete_product') }}">Excluir Produto</a></li>
+            <li><a href="{{ url_for('place_order') }}">Fazer Pedido</a></li>
+            <li><a href="{{ url_for('view_orders') }}">Ver Pedidos</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <p>Bem-vindo ao sistema de e-commerce!</p>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Sistema de E-commerce</p>
+    </footer>
+</body>
+</html>
