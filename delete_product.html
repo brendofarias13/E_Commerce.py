@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Excluir Produto</h1>
+    <form method="post">
+        <label for="produto_id">ID do Produto:</label>
+        <input type="text" id="produto_id" name="produto_id">
+        <button type="submit">Excluir Produto</button>
+    </form>
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>
