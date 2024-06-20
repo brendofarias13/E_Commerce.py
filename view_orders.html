@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Ver Pedidos</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Início</a></li>
+            <li><a href="{{ url_for('add_product') }}">Adicionar Produto</a></li>
+            <li><a href="{{ url_for('delete_product') }}">Excluir Produto</a></li>
+            <li><a href="{{ url_for('place_order') }}">Fazer Pedido</a></li>
+            <li><a href="{{ url_for('view_orders') }}">Ver Pedidos</a></li>
+            <li><a href="{{ url_for('view_products') }}">Ver Produtos</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID do Pedido</th>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Imagem</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido[0] }}</td>
+                    <td>{{ pedido[1] }}</td>
+                    <td>{{ pedido[2] }}</td>
+                    <td>
+                        {% if pedido[3] %}
+                        <img src="{{ url_for('static', filename=pedido[3]) }}" alt="{{ pedido[2] }}" width="100">
+                        {% else %}
+                        Sem imagem
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Sistema de E-commerce</p>
+    </footer>
+</body>
+</html>
